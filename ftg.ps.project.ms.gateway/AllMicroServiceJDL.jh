@@ -116,6 +116,97 @@ relationship OneToOne{
     BonCommande{livraisonBon} to BonLivraison
 }
 
+entity LigneCredit {
+    idLigneCredit Long,
+    libelle String,
+    description String,
+    dateCreation LocalDate,
+    dateMisAjour LocalDate,
+    montant BigDecimal,
+    idOwner Long,
+    nomFinancier String
+}
+
+entity Pret {
+    numPret Long,
+    dateCreation LocalDate,
+    dateMisAjour LocalDate
+    capitalRestant BigDecimal,
+    dateDernierRemb LocalDate,
+    idOwner Long
+}
+
+entity EtatPret {
+    idEtat Long,
+    libelle String,
+    description String
+}
+
+entity RemboursementCredit {
+    idRemboursement Long,
+    dateRemboursement LocalDate,
+    idOwner Long
+}
+
+entity ReglementCommande {
+    idReglement Long,
+    dateReglement LocalDate,
+    idBonDeCommande Long
+}
+
+entity DirectPaiement {
+    idModePaiement Long,
+    libelle String,
+    description String
+}
+
+relationship OneToMany {
+    LigneCredit to Pret,
+    RemboursementCredit to DirectPaiement,
+    ReglementCommande{reglementCommandePret} to Pret,
+    ReglementCommande{reglementCommandeDirectPaiement} to DirectPaiement
+}
+relationship OneToOne {
+    Pret to EtatPret,
+    RemboursementCredit to Pret
+}
+
+entity Domaine {
+    domaineId Long,
+    nom String,
+    description String,
+    status Boolean,//ex: actif, inactif, gelé
+    userCreated Long,
+    userLastModif Long,
+    createdDate LocalDate,
+    dateastModif LocalDate
+    }
+
+entity Activite {
+    activiteId Long,
+    nom String,
+    description String,
+    categorie String,
+    dateDebut LocalDate,
+    dateFin LocalDate,
+    status Boolean,//ex: actif, inactif, gelé
+    userCreated Long,
+    userLastModif Long,
+    createdDate LocalDate,
+    dateLastModif LocalDate
+    }
+
+entity ActeurDomaine{
+    idActeur Long
+}
+
+relationship OneToMany{
+ActeurDomaine{domaineActeur} to Domaine,
+Domaine{domaineActivites} to Activite
+}
+
 microservice Offre,AppelOffre,Contrat,Enchere,OffreEnchere with msencheresoffres
 microservice Boutique,Magasin,Produit,Service,BoutiqueService,BoutiqueProduit,BonCommande,MagasinProduit,BonLivraison with psMagasin
+microservice Domaine,Activite,ActeurDomaine with mcsDomaines
+microservice LigneCredit,Pret,EtatPret,RemboursementCredit,ReglementCommande,DirectPaiement with mcsPaiements
 search * with elasticsearch
