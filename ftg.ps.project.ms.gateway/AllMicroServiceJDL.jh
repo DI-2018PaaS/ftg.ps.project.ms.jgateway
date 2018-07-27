@@ -205,8 +205,191 @@ ActeurDomaine{domaineActeur} to Domaine,
 Domaine{domaineActivites} to Activite
 }
 
+entity Utilisateur {
+    username String,
+    utilUniqueid Long required,
+    lastName String,
+    firstName String,
+    mail String,
+    phoneNumber String,
+    password String,
+    creationDateUser LocalDate,
+    lastConnectionDate LocalDate,
+    userActeurID Long
+}
+entity Role {
+    roleUniqueID Long required,
+    roleName String,
+    acteurTypeID Long
+}
+entity Operation {
+    operationUniqueID Long required,
+    operationName String,
+    operationDescription String
+}
+entity RoleOperation {
+}
+
+entity MotDePasse {
+    valeurMotDePasse String required,
+    mdpOwnerUser Long required,
+    lastMotDePasse String,
+    mdpCreationDate LocalDate,
+    mdpLastConnectionDate LocalDate,
+    mdpLastModificationDate LocalDate
+}
+
+relationship OneToMany {
+    Utilisateur{motdePasses} to MotDePasse,
+    Utilisateur{roles} to Role,
+    RoleOperation{roleOps} to Operation,
+    RoleOperation{opsRole} to Role
+}
+
+entity Organisme {
+    organismeId Long,
+    raisonSociale String,
+    typeOrganisme String,
+    domaineActivite String,
+    email String,
+    telephone String,
+    userCreated Long,
+    userLastModif Long,
+    dateCreated LocalDate,
+    dateLastModif LocalDate
+}
+
+entity Contact {
+    contactId Long,
+    nom String,
+    prenom String,
+    email String,
+    telephone String,
+    userCreated Long,
+    userLastModif Long,
+    dateCreated LocalDate,
+    dateLastModif LocalDate
+}
+
+entity Banque {
+    banqueId Long,
+    raisonSociale String,
+    email String,
+    siteWeb String,
+    telephone String,
+    capital Long,
+    chiffreDaffaire Long,
+    userCreated Long,
+    userLastModif Long,
+    dateCreated LocalDate,
+    dateLastModif LocalDate 
+}
+
+entity Animateur{
+    animateurId Long,
+    type String,
+    nom String,
+    prenom String,
+    email String,
+    telephone String,
+    userCreated Long,
+    userLastModif Long,
+    dateCreated LocalDate,
+    dateLastModif LocalDate
+}
+
+entity Fournisseur {
+    fournisseurId Long,
+    type String,
+    nom String,
+    prenom String,
+    email String,
+    telephone String,
+    userCreated Long,
+    userLastModif Long,
+    dateCreated LocalDate,
+    dateLastModif LocalDate 
+}
+entity Acheteur {
+    acheteurId Long,
+    type String,
+    nom String,
+    prenom String,
+    email String,
+    telephone String,
+    userCreated Long,
+    userLastModif Long,
+    dateCreated LocalDate,
+    dateLastModif LocalDate
+}
+entity Adresse {
+    adresseId Long,
+    rue String,
+    codePostal String,
+    ville String,
+    pays String,
+    userCreated Long,
+    userLastModif Long,
+    dateCreated LocalDate,
+    dateLastModif LocalDate
+}
+
+entity ActeurType {
+    idActeurType Long,
+    libelleActeur String
+}
+
+entity Agreement{
+    agreementId Long,
+    numeroAgrement String,
+    dateAttibution LocalDate,
+    dateDebValidite LocalDate,
+    dateFinValidite LocalDate,
+    status Boolean,
+    userCreated Long,
+    userLastModif Long,
+    dateCreated LocalDate,
+    dateLastModif LocalDate
+}
+entity AnimateurFournisseur{
+     niveauAgreement Integer    
+}
+
+// Contact relionship with actors
+relationship OneToMany{
+    Banque{bcontacts} to Contact,
+    Organisme{ocontacts} to Contact,
+    Fournisseur{fcontacts} to Contact,
+    Acheteur{acontacts} to Contact,
+    Animateur{ancontacts} to Contact,
+    Agreement{amimateur} to Animateur,
+    Agreement{fournisseur} to Fournisseur,
+    AnimateurFournisseur{AnFournisseur} to Fournisseur,
+    AnimateurFournisseur{AnAnimateur} to Animateur
+}
+
+
+// adresse relationship
+relationship OneToOne{
+    Acheteur{clientBanque} to Banque,
+    Acheteur{clientOrga} to Organisme,
+    Fournisseur{foclientBanque} to Banque,
+    Fournisseur{foclientOrga} to Organisme,
+    Contact{adresse} to Adresse
+    
+    Banque{acteurTypeBanque} to ActeurType,
+    Organisme{acteurTypeOrganisme} to ActeurType,
+    Fournisseur{acteurTypeFournisseur} to ActeurType,
+    Acheteur{acteurTypeAcheteur} to ActeurType,
+    Animateur{acteurTypeAnimateur} to ActeurType
+} 
+
+
 microservice Offre,AppelOffre,Contrat,Enchere,OffreEnchere with msencheresoffres
 microservice Boutique,Magasin,Produit,Service,BoutiqueService,BoutiqueProduit,BonCommande,MagasinProduit,BonLivraison with psMagasin
 microservice Domaine,Activite,ActeurDomaine with mcsDomaines
 microservice LigneCredit,Pret,EtatPret,RemboursementCredit,ReglementCommande,DirectPaiement with mcsPaiements
+microservice Utilisateur,Role,Operation,RoleOperation,MotDePasse, with user
+microservice Organisme,Contact,Banque,Animateur,Fournisseur,Acheteur,Adresse,ActeurType,Agreement,AnimateurFournisseur with acteur
+
 search * with elasticsearch
