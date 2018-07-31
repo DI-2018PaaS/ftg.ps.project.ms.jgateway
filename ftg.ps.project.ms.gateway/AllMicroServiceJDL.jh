@@ -389,7 +389,7 @@ microservice Offre,AppelOffre,Contrat,Enchere,OffreEnchere with msencheresoffres
 microservice Boutique,Magasin,Produit,Service,BoutiqueService,BoutiqueProduit,BonCommande,MagasinProduit,BonLivraison with psMagasin
 microservice Domaine,Activite,ActeurDomaine with mcsDomaines
 microservice LigneCredit,Pret,EtatPret,RemboursementCredit,ReglementCommande,DirectPaiement with mcsPaiements
-microservice Utilisateur,Role,Operation,RoleOperation,MotDePasse, with user
+microservice Utilisateur,Role,Operation,RoleOperation,MotDePasse with user
 microservice Organisme,Contact,Banque,Animateur,Fournisseur,Acheteur,Adresse,ActeurType,Agreement,AnimateurFournisseur with acteur
 
 search * with elasticsearch
