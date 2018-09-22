@@ -2,28 +2,12 @@
 <div id="header">
 	<div id="header-t">
 		<div class="jh-logo-container float-left">
-	        <!--TODO BEGIN finaliser le style-->
-	        <a class="header-brand logo float-left" routerLink="/" (click)="collapseNavbar()">
+   	        <a class="header-brand logo float-left" routerLink="/" (click)="collapseNavbar()">
 	            <span class="logo-img"></span>
 	        </a>
-	        <a class="header-brand icon float-left" routerLink="/" (click)="collapseNavbar()">
-	            <span class="icon_home">HOME</span>
-	            
-	        </a>
-	        <a class="header-brand icon float-left" routerLink="/" (click)="collapseNavbar()">
-	            <span class="icon_basket">PANIER</span>
-	            
-	        </a>
-	        
-	        <input type="text" placeholder="Search..">
-	        <select name="cars">
-			    <option value="fr">FR</option>
-			    <option value="en">EN</option>
-			    <option value="ci">CI</option>
-			    <option value="de">DE</option>
-		  </select>
 		  <!-- END -->
 	    </div>
+	    <jhi-navbar></jhi-navbar>
 	</div>
 	<div id="header-d">
 	<ngb-carousel *ngIf="images">

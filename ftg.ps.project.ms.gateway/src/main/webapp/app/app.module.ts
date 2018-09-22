@@ -20,9 +20,11 @@ import {
     JhiMainComponent,
     HeaderComponent,
     NavbarComponent,
+    Navbar2Component,
     FooterComponent,
     PageRibbonComponent,
     ActiveMenuDirective,
+    ActiveMenu2Directive,
     ErrorComponent
 } from './layouts';
 
@@ -41,9 +43,11 @@ import {
     declarations: [
         JhiMainComponent,
         NavbarComponent,
+        Navbar2Component,
         ErrorComponent,
         PageRibbonComponent,
         ActiveMenuDirective,
+        ActiveMenu2Directive,
         HeaderComponent,
         FooterComponent
     ],
