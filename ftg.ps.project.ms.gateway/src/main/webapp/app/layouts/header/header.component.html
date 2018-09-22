@@ -1,0 +1,65 @@
+<!-- Header -->
+<div id="header">
+	<div id="header-t">
+		<div class="jh-logo-container float-left">
+	        <!--TODO BEGIN finaliser le style-->
+	        <a class="header-brand logo float-left" routerLink="/" (click)="collapseNavbar()">
+	            <span class="logo-img"></span>
+	        </a>
+	        <a class="header-brand icon float-left" routerLink="/" (click)="collapseNavbar()">
+	            <span class="icon_home">HOME</span>
+	            
+	        </a>
+	        <a class="header-brand icon float-left" routerLink="/" (click)="collapseNavbar()">
+	            <span class="icon_basket">PANIER</span>
+	            
+	        </a>
+	        
+	        <input type="text" placeholder="Search..">
+	        <select name="cars">
+			    <option value="fr">FR</option>
+			    <option value="en">EN</option>
+			    <option value="ci">CI</option>
+			    <option value="de">DE</option>
+		  </select>
+		  <!-- END -->
+	    </div>
+	</div>
+	<div id="header-d">
+	<ngb-carousel *ngIf="images">
+	  <ng-template ngbSlide>
+	  	<!--img [src]="images[0]" alt="Random second slide"-->
+	    <img src="../../../content/images/header/slideshow/main_Advertisement_FalseContent.png" alt="list item 0" />
+	    <div class="carousel-caption">
+	      <h3>10 seconds between slides...</h3>
+	      <p>This carousel uses customized default values.</p>
+	    </div>
+	  </ng-template>
+	  <ng-template ngbSlide>
+	    <!--img [src]="images[1]" alt="Random second slide"-->
+	    <img src="../../../content/images/header/slideshow/main_Advertisement_Bg.png" alt="list item 1" />
+	    <div class="carousel-caption">
+	      <h3>No mouse events...</h3>
+	      <p>This carousel doesn't pause or resume on mouse events</p>
+	    </div>
+	  </ng-template>
+	  <ng-template ngbSlide>
+	    <!--img [src]="images[2]" alt="Random second slide"-->
+	    <img src="../../../content/images/header/slideshow/main_Advertisement_FalseContent.png" alt="list item 2" />
+	    <div class="carousel-caption">
+	      <h3>No keyboard...</h3>
+	      <p>This carousel uses customized default values.</p>
+	    </div>
+	  </ng-template>
+	  <ng-template ngbSlide>
+	    <!--img [src]="images[3]" alt="Random second slide"-->
+	    <img src="../../../content/images/header/slideshow/main_Advertisement_FalseContent.png" alt="list item 3" />
+	    <div class="carousel-caption">
+	      <h3>And no wrap after last slide.</h3>
+	      <p>This carousel uses customized default values.</p>
+	    </div>
+	  </ng-template>
+	</ngb-carousel>
+	</div>
+</div>
+

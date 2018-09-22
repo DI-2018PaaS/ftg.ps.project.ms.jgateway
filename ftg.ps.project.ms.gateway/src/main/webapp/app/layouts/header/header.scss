@@ -1,0 +1,90 @@
+/* ==========================================================================
+Header
+========================================================================== */
+#header-t {
+    background-image: url('../../../content/images/header/bg_Rpt.png');
+    background-repeat: repeat;
+    height: 80px;
+}
+
+#header-d {
+    border: 1px solid black;
+}
+
+ul#list-items {
+    min-width: 267px;
+    list-style: none;
+}
+
+ul#list-items li {
+    background-image: url('../../../content/images/header/separator.png');
+    background-position: bottom 0px right 6px;
+    padding-right: 9px;
+    text-align: center;
+    background-repeat: no-repeat;
+}
+ul#list-items li a {
+    color: white;
+    font-size: 13pt;
+    font-weight: normal;
+}
+
+ul#list-items li:last-child {
+    background: none 0; /* Annule toutes les bordures pour le dernier li */
+}
+
+/* ==========================================================================
+Logo styles
+========================================================================== */
+.header-brand {
+    &.logo {
+        padding: 5px 15px;
+        .logo-img {
+            height: 70px;
+            min-width: 500px;
+            display: inline-block;
+            vertical-align: middle;
+            background: url('../../../content/images/header/logo_Cofina.png') no-repeat center center;
+            background-size: contain;
+        }
+    }
+    &.icon {
+        padding: 5px 15px;
+        .icon_home {
+            height: 20px;
+            min-width: 70px;
+            display: inline-block;
+            vertical-align: middle;
+            background: url('../../../content/images/header/icons_Home_Normal.png') no-repeat center center;
+            background-size: contain;
+            color: #ffffff;
+        }
+
+        .icon_home a {
+            color: white;
+            font-size: 13pt;
+            font-weight: normal;
+        }
+        .icon_basket {
+            height: 20px;
+            min-width: 70px;
+            display: inline-block;
+            vertical-align: middle;
+            background: url('../../../content/images/header/icons_Basket_Normal.png') no-repeat center center;
+            background-size: contain;
+        }
+        .icon_basket a {
+            color: #dc0030;
+            font-size: 21pt;
+        }
+    }
+
+    .jh-header-toggler {
+        color: #ccc;
+        font-size: 1.5em;
+        padding: 10px;
+        &:hover {
+            color: #fff;
+        }
+    }
+}
